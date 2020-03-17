@@ -11,18 +11,18 @@
     "nx.json": "*"
   },
   "projects": {
-    "user-application": {
-      "tags": []
-    },
-    "user-application-e2e": {
-      "tags": [],
-      "implicitDependencies": ["user-application"]
-    },
     "api": {
       "tags": []
     },
     "api-interfaces": {
       "tags": []
+    },
+    "atlas-user-portal": {
+      "tags": []
+    },
+    "atlas-user-portal-e2e": {
+      "tags": [],
+      "implicitDependencies": ["atlas-user-portal"]
     }
   }
 }

@@ -1,6 +1,6 @@
 import { getGreeting } from '../support/app.po';
 
-describe('user-application', () => {
+describe('atlas-user-portal', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should display welcome message', () => {
@@ -8,6 +8,6 @@ describe('user-application', () => {
     cy.login('my-email@something.com', 'myPassword');
 
     // Function helper example, see `../support/app.po.ts` file
-    getGreeting().contains('Welcome to user-application!');
+    getGreeting().contains('Welcome to atlas-user-portal!');
   });
 });

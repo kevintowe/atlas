@@ -1,126 +1,6 @@
 {
   "version": 1,
   "projects": {
-    "user-application": {
-      "projectType": "application",
-      "schematics": {},
-      "root": "apps/user-application",
-      "sourceRoot": "apps/user-application/src",
-      "prefix": "atlas",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:browser",
-          "options": {
-            "outputPath": "dist/apps/user-application",
-            "index": "apps/user-application/src/index.html",
-            "main": "apps/user-application/src/main.ts",
-            "polyfills": "apps/user-application/src/polyfills.ts",
-            "tsConfig": "apps/user-application/tsconfig.app.json",
-            "aot": true,
-            "assets": [
-              "apps/user-application/src/favicon.ico",
-              "apps/user-application/src/assets"
-            ],
-            "styles": ["apps/user-application/src/styles.css"],
-            "scripts": []
-          },
-          "configurations": {
-            "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/user-application/src/environments/environment.ts",
-                  "with": "apps/user-application/src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-            "browserTarget": "user-application:build",
-            "proxyConfig": "apps/user-application/proxy.conf.json"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "user-application:build:production"
-            }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "user-application:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/user-application/tsconfig.app.json",
-              "apps/user-application/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/user-application/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/user-application/jest.config.js",
-            "tsConfig": "apps/user-application/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/user-application/src/test-setup.ts"
-          }
-        }
-      }
-    },
-    "user-application-e2e": {
-      "root": "apps/user-application-e2e",
-      "sourceRoot": "apps/user-application-e2e/src",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@nrwl/cypress:cypress",
-          "options": {
-            "cypressConfig": "apps/user-application-e2e/cypress.json",
-            "tsConfig": "apps/user-application-e2e/tsconfig.e2e.json",
-            "devServerTarget": "user-application:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "user-application:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/user-application-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/user-application-e2e/**"]
-          }
-        }
-      }
-    },
     "api": {
       "root": "apps/api",
       "sourceRoot": "apps/api/src",
@@ -201,6 +81,126 @@
           }
         }
       }
+    },
+    "atlas-user-portal": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/atlas-user-portal",
+      "sourceRoot": "apps/atlas-user-portal/src",
+      "prefix": "atlas",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/atlas-user-portal",
+            "index": "apps/atlas-user-portal/src/index.html",
+            "main": "apps/atlas-user-portal/src/main.ts",
+            "polyfills": "apps/atlas-user-portal/src/polyfills.ts",
+            "tsConfig": "apps/atlas-user-portal/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/atlas-user-portal/src/favicon.ico",
+              "apps/atlas-user-portal/src/assets"
+            ],
+            "styles": ["apps/atlas-user-portal/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/atlas-user-portal/src/environments/environment.ts",
+                  "with": "apps/atlas-user-portal/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "atlas-user-portal:build",
+            "proxyConfig": "apps/atlas-user-portal/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "atlas-user-portal:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "atlas-user-portal:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/atlas-user-portal/tsconfig.app.json",
+              "apps/atlas-user-portal/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/atlas-user-portal/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/atlas-user-portal/jest.config.js",
+            "tsConfig": "apps/atlas-user-portal/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/atlas-user-portal/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "atlas-user-portal-e2e": {
+      "root": "apps/atlas-user-portal-e2e",
+      "sourceRoot": "apps/atlas-user-portal-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/atlas-user-portal-e2e/cypress.json",
+            "tsConfig": "apps/atlas-user-portal-e2e/tsconfig.e2e.json",
+            "devServerTarget": "atlas-user-portal:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "atlas-user-portal:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/atlas-user-portal-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/atlas-user-portal-e2e/**"]
+          }
+        }
+      }
     }
   },
   "cli": {
@@ -216,5 +216,5 @@
       "unitTestRunner": "jest"
     }
   },
-  "defaultProject": "user-application"
+  "defaultProject": "atlas-user-portal"
 }
