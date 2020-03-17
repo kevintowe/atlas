@@ -11,9 +11,6 @@
     "nx.json": "*"
   },
   "projects": {
-    "api": {
-      "tags": []
-    },
     "api-interfaces": {
       "tags": []
     },
@@ -23,6 +20,9 @@
     "atlas-user-portal-e2e": {
       "tags": [],
       "implicitDependencies": ["atlas-user-portal"]
+    },
+    "server": {
+      "tags": []
     }
   }
 }
