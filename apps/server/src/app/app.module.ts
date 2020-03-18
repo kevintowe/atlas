@@ -1,11 +1,20 @@
 import { Module } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AuthModule } from './auth';
+import { DeviceComsModule } from './device-coms';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService]
+  imports: [
+    AuthModule,
+    GraphQLModule.forRoot({
+      debug: false,
+      playground: false,
+      autoSchemaFile: true
+    }),
+    DeviceComsModule
+  ],
+  controllers: [],
+  providers: []
 })
 export class AppModule {}
