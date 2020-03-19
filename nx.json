@@ -19,9 +19,23 @@
     },
     "atlas-user-portal-e2e": {
       "tags": [],
-      "implicitDependencies": ["atlas-user-portal"]
+      "implicitDependencies": [
+        "atlas-user-portal"
+      ]
     },
     "server": {
+      "tags": []
+    },
+    "atlas-factory": {
+      "tags": []
+    },
+    "atlas-factory-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "atlas-factory"
+      ]
+    },
+    "factory-floor": {
       "tags": []
     }
   }

@@ -14,7 +14,10 @@
               "libs/api-interfaces/tsconfig.lib.json",
               "libs/api-interfaces/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-interfaces/**"
+            ]
           }
         },
         "test": {
@@ -47,7 +50,9 @@
               "apps/atlas-user-portal/src/favicon.ico",
               "apps/atlas-user-portal/src/assets"
             ],
-            "styles": ["apps/atlas-user-portal/src/styles.css"],
+            "styles": [
+              "apps/atlas-user-portal/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -106,7 +111,10 @@
               "apps/atlas-user-portal/tsconfig.app.json",
               "apps/atlas-user-portal/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/atlas-user-portal/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/atlas-user-portal/**"
+            ]
           }
         },
         "test": {
@@ -141,8 +149,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/atlas-user-portal-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/atlas-user-portal-e2e/**"]
+            "tsConfig": [
+              "apps/atlas-user-portal-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/atlas-user-portal-e2e/**"
+            ]
           }
         }
       }
@@ -160,7 +173,9 @@
             "outputPath": "dist/apps/server",
             "main": "apps/server/src/main.ts",
             "tsConfig": "apps/server/tsconfig.app.json",
-            "assets": ["apps/server/src/assets"]
+            "assets": [
+              "apps/server/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -189,7 +204,10 @@
               "apps/server/tsconfig.app.json",
               "apps/server/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/server/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/server/**"
+            ]
           }
         },
         "test": {
@@ -197,6 +215,212 @@
           "options": {
             "jestConfig": "apps/server/jest.config.js",
             "tsConfig": "apps/server/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "atlas-factory": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/atlas-factory",
+      "sourceRoot": "apps/atlas-factory/src",
+      "prefix": "atlas",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/atlas-factory",
+            "index": "apps/atlas-factory/src/index.html",
+            "main": "apps/atlas-factory/src/main.ts",
+            "polyfills": "apps/atlas-factory/src/polyfills.ts",
+            "tsConfig": "apps/atlas-factory/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/atlas-factory/src/favicon.ico",
+              "apps/atlas-factory/src/assets"
+            ],
+            "styles": [
+              "apps/atlas-factory/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/atlas-factory/src/environments/environment.ts",
+                  "with": "apps/atlas-factory/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "atlas-factory:build",
+            "proxyConfig": "apps/atlas-factory/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "atlas-factory:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "atlas-factory:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/atlas-factory/tsconfig.app.json",
+              "apps/atlas-factory/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/atlas-factory/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/atlas-factory/jest.config.js",
+            "tsConfig": "apps/atlas-factory/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "apps/atlas-factory/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "atlas-factory-e2e": {
+      "root": "apps/atlas-factory-e2e",
+      "sourceRoot": "apps/atlas-factory-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/atlas-factory-e2e/cypress.json",
+            "tsConfig": "apps/atlas-factory-e2e/tsconfig.e2e.json",
+            "devServerTarget": "atlas-factory:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "atlas-factory:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/atlas-factory-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/atlas-factory-e2e/**"
+            ]
+          }
+        }
+      }
+    },
+    "factory-floor": {
+      "root": "apps/factory-floor",
+      "sourceRoot": "apps/factory-floor/src",
+      "projectType": "application",
+      "prefix": "factory-floor",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "nx-electron:build",
+          "options": {
+            "outputPath": "dist/apps/factory-floor",
+            "main": "apps/factory-floor/src/main.ts",
+            "tsConfig": "apps/factory-floor/tsconfig.app.json",
+            "assets": [
+              "apps/factory-floor/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/factory-floor/src/environments/environment.ts",
+                  "with": "apps/factory-floor/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "nx-electron:execute",
+          "options": {
+            "buildTarget": "factory-floor:build"
+          }
+        },
+        "package": {
+          "builder": "nx-electron:package",
+          "options": {
+            "name": "factory-floor",
+            "frontendProject": "atlas-factory",
+            "out": "dist/packages"
+          }
+        },
+        "make": {
+          "builder": "nx-electron:make",
+          "options": {
+            "name": "factory-floor",
+            "frontendProject": "atlas-factory",
+            "out": "dist/executables"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/factory-floor/tsconfig.app.json",
+              "apps/factory-floor/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/factory-floor/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/factory-floor/jest.config.js",
+            "tsConfig": "apps/factory-floor/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }
